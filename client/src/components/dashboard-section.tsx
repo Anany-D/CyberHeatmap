@@ -18,7 +18,7 @@ export function DashboardSection({ searchQuery }: DashboardSectionProps) {
     setLiveStates(prev => ({ ...prev, [id]: !prev[id] }))
   }
 
-  const baseUrl = "https://b545-152-58-58-246.ngrok-free.app"
+  const baseUrl = "http://localhost:5601"
 
   const visualizations = [
     {
@@ -26,7 +26,7 @@ export function DashboardSection({ searchQuery }: DashboardSectionProps) {
       title: "Global Threat Map",
       icon: "🌍",
       description: "Interactive global map showing real-time cyber threat distribution and attack patterns",
-      dashboardUrl: `${baseUrl}/app/dashboards#/view/014ed670-3efc-11f0-a5ea-5bd6f73155c2?embed=true&_g=(filters:!(),refreshInterval:(pause:!t,value:0),time:(from:now-24h,to:now))&_a=(description:'',filters:!(),fullScreenMode:!f,options:(hidePanelTitles:!f,useMargins:!t),query:(language:kuery,query:''),timeRestore:!f,title:'Map%20Dashboard',viewMode:view)`,
+      dashboardUrl: `${baseUrl}/app/dashboards#/view/014ed670-3efc-11f0-a5ea-5bd6f73155c2?embed=true&_g=(filters:!(),refreshInterval:(pause:!t,value:0),time:(from:now-7d,to:now))&_a=(description:'',filters:!(),fullScreenMode:!f,options:(hidePanelTitles:!f,useMargins:!t),query:(language:kuery,query:''),timeRestore:!f,title:'Map%20Dashboard',viewMode:view)`,
       demoContent: (
         <div className="absolute inset-0 cyber-bg p-4">
           <div className="text-white mb-4">
@@ -54,7 +54,7 @@ export function DashboardSection({ searchQuery }: DashboardSectionProps) {
       title: "Threat Distribution",
       icon: "📊",
       description: "Pie chart visualization showing distribution of different threat types and their prevalence",
-      dashboardUrl: `${baseUrl}/app/dashboards#/view/pie-chart-dashboard?embed=true`,
+      dashboardUrl: `${baseUrl}/app/dashboards#/view/6ea6bd60-3efb-11f0-a5ea-5bd6f73155c2?embed=true&_g=(filters:!(),refreshInterval:(pause:!t,value:0),time:(from:now-7d,to:now))&_a=(description:'',filters:!(),fullScreenMode:!f,options:(hidePanelTitles:!f,useMargins:!t),query:(language:kuery,query:''),timeRestore:!f,title:'Piechart%20Dashboard',viewMode:view)`,
       demoContent: (
         <div className="absolute inset-0 cyber-bg p-4 flex items-center justify-center">
           <div className="text-center">
@@ -72,10 +72,10 @@ export function DashboardSection({ searchQuery }: DashboardSectionProps) {
     },
     {
       id: "threatLevels",
-      title: "Threat Level Gauge",
+      title: "Heatmap Dashboard", 
       icon: "🎯",
-      description: "Real-time gauge showing current national cyber threat level and security status",
-      dashboardUrl: `${baseUrl}/app/dashboards#/view/gauge-dashboard?embed=true`,
+      description: "Real-time heatmap visualization showing threat intensity across different regions and categories",
+      dashboardUrl: `${baseUrl}/app/dashboards#/view/df1f4fd0-3efb-11f0-a5ea-5bd6f73155c2?embed=true&_g=(filters:!(),refreshInterval:(pause:!t,value:0),time:(from:now-7d,to:now))&_a=(description:'',filters:!(),fullScreenMode:!f,options:(hidePanelTitles:!f,useMargins:!t),query:(language:kuery,query:''),timeRestore:!f,title:'Heatmap%20Dashboard',viewMode:view)`,
       demoContent: (
         <div className="absolute inset-0 cyber-bg p-4 flex items-center justify-center">
           <div className="text-center">
@@ -96,10 +96,10 @@ export function DashboardSection({ searchQuery }: DashboardSectionProps) {
     },
     {
       id: "attackPatterns",
-      title: "Attack Patterns",
+      title: "New Dashboard",
       icon: "📈",
-      description: "Bar chart analysis of attack patterns and trends over time with predictive insights",
-      dashboardUrl: `${baseUrl}/app/dashboards#/view/lens-bar-dashboard?embed=true`,
+      description: "Advanced analytics dashboard with comprehensive data visualizations and insights",
+      dashboardUrl: `${baseUrl}/app/dashboards#/view/6d3da750-3d15-11f0-8be9-9375013f3cdd?embed=true&_g=(filters:!(),refreshInterval:(pause:!t,value:0),time:(from:now-7d,to:now))&_a=(description:'',filters:!(),fullScreenMode:!f,options:(hidePanelTitles:!f,useMargins:!t),query:(language:kuery,query:''),timeRestore:!f,title:NEW_DASHBOARD,viewMode:view)`,
       demoContent: (
         <div className="absolute inset-0 cyber-bg p-4">
           <div className="text-white mb-4">
@@ -136,10 +136,10 @@ export function DashboardSection({ searchQuery }: DashboardSectionProps) {
     },
     {
       id: "geographicAnalysis",
-      title: "Geographic Analysis",
+      title: "LensBar Dashboard",
       icon: "🗺️",
-      description: "Advanced geographic analysis of threat origins and target destinations worldwide",
-      dashboardUrl: `${baseUrl}/app/dashboards#/view/map-dashboard?embed=true`,
+      description: "Advanced bar chart analysis using Kibana Lens for detailed data exploration and insights",
+      dashboardUrl: `${baseUrl}/app/dashboards#/view/bd47d440-3efb-11f0-a5ea-5bd6f73155c2?embed=true&_g=(filters:!(),refreshInterval:(pause:!t,value:0),time:(from:now-7d,to:now))&_a=(description:'',filters:!(),fullScreenMode:!f,options:(hidePanelTitles:!f,useMargins:!t),query:(language:kuery,query:''),timeRestore:!f,title:'LensBar%20Dashboard',viewMode:view)`,
       demoContent: (
         <div className="absolute inset-0 cyber-bg p-4">
           <div className="text-white mb-4">
