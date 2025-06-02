@@ -156,16 +156,14 @@ export function SnapshotsSection() {
                         alt={snapshot.title}
                         className="w-full h-full object-cover"
                         onLoad={(e) => {
-                          // Ensure image is visible when it loads successfully
+                          console.log('Image loaded successfully:', snapshot.imageUrl)
                           e.currentTarget.style.display = 'block'
                         }}
                         onError={(e) => {
                           console.error('Failed to load image:', snapshot.imageUrl)
-                          // Only hide if image actually fails to load
                           e.currentTarget.style.display = 'none'
                           const parentEl = e.currentTarget.parentElement!
                           parentEl.style.background = 'linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%)'
-                          // Add fallback text
                           if (!parentEl.querySelector('.fallback-text')) {
                             const fallbackDiv = document.createElement('div')
                             fallbackDiv.className = 'fallback-text absolute inset-0 flex items-center justify-center text-muted-foreground text-sm'
@@ -248,10 +246,20 @@ export function SnapshotsSection() {
                     src={selectedSnapshot.imageUrl}
                     alt={selectedSnapshot.title}
                     className="w-full h-auto"
+                    onLoad={(e) => {
+                      console.log('Modal image loaded successfully:', selectedSnapshot.imageUrl)
+                    }}
                     onError={(e) => {
-                      // Fallback to gradient background if image fails
+                      console.error('Failed to load modal image:', selectedSnapshot.imageUrl)
                       e.currentTarget.style.display = 'none'
-                      e.currentTarget.parentElement!.style.background = 'linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%)'
+                      const parentEl = e.currentTarget.parentElement!
+                      parentEl.style.background = 'linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%)'
+                      if (!parentEl.querySelector('.fallback-text')) {
+                        const fallbackDiv = document.createElement('div')
+                        fallbackDiv.className = 'fallback-text absolute inset-0 flex items-center justify-center text-muted-foreground'
+                        fallbackDiv.textContent = 'Preview not available'
+                        parentEl.appendChild(fallbackDiv)
+                      }
                     }}
                   />
                 </div>
