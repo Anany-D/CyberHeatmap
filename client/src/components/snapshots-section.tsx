@@ -27,6 +27,9 @@ export function SnapshotsSection() {
   const [selectedSnapshot, setSelectedSnapshot] = useState<Snapshot | null>(null)
   const [isDialogOpen, setIsDialogOpen] = useState(false)
 
+  // Add debugging for image paths
+  console.log('Current window location:', window.location.origin)
+  
   // Snapshots would be fetched from your backend API
   const snapshots: Snapshot[] = [
     {
@@ -152,10 +155,23 @@ export function SnapshotsSection() {
                         src={snapshot.imageUrl}
                         alt={snapshot.title}
                         className="w-full h-full object-cover"
+                        onLoad={(e) => {
+                          // Ensure image is visible when it loads successfully
+                          e.currentTarget.style.display = 'block'
+                        }}
                         onError={(e) => {
-                          // Fallback to gradient background if image fails
+                          console.error('Failed to load image:', snapshot.imageUrl)
+                          // Only hide if image actually fails to load
                           e.currentTarget.style.display = 'none'
-                          e.currentTarget.parentElement!.style.background = 'linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%)'
+                          const parentEl = e.currentTarget.parentElement!
+                          parentEl.style.background = 'linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%)'
+                          // Add fallback text
+                          if (!parentEl.querySelector('.fallback-text')) {
+                            const fallbackDiv = document.createElement('div')
+                            fallbackDiv.className = 'fallback-text absolute inset-0 flex items-center justify-center text-muted-foreground text-sm'
+                            fallbackDiv.textContent = 'Image preview unavailable'
+                            parentEl.appendChild(fallbackDiv)
+                          }
                         }}
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
