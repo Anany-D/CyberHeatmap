@@ -27,64 +27,61 @@ export function SnapshotsSection() {
   const [selectedSnapshot, setSelectedSnapshot] = useState<Snapshot | null>(null)
   const [isDialogOpen, setIsDialogOpen] = useState(false)
 
-  // Add debugging for image paths
-  console.log('Current window location:', window.location.origin)
-  
-  // Snapshots would be fetched from your backend API
+  // Demo snapshots with placeholder content
   const snapshots: Snapshot[] = [
     {
       id: "1",
       title: "Global Threat Distribution Map",
-      description: "Interactive world map showing regional cyber threat distribution with major hotspots in Asia (3,910 threats), Oceania (267), and Africa regions",
+      description: "Interactive world map showing regional cyber threat distribution with major hotspots in Asia-Pacific and European regions",
       timestamp: "2025-01-02T15:30:00Z",
-      imageUrl: "/api/assets/repl.png",
+      imageUrl: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&h=400&fit=crop",
       dashboardType: "Map",
-      size: "1024x512"
+      size: "1920x1080"
     },
     {
-      id: "2", 
+      id: "2",
       title: "Threat Type Distribution Analysis",
-      description: "Comprehensive pie chart breakdown showing malware, DDoS, brute force, phishing, and SQL injection attack distributions across multiple IP ranges",
+      description: "Comprehensive pie chart breakdown showing malware, DDoS, brute force, phishing, and SQL injection attack distributions",
       timestamp: "2025-01-02T14:15:00Z",
-      imageUrl: "/api/assets/Screenshot%202025-06-02%20161052.png",
+      imageUrl: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=400&fit=crop",
       dashboardType: "Pie Chart",
-      size: "1024x398"
+      size: "1920x1080"
     },
     {
       id: "3",
       title: "Country-Based Threat Metrics",
-      description: "Gauge dashboard displaying threat counts by major regions: United States (4,790), China (1,174), Japan (593), United Kingdom (410), South Korea (363)",
-      timestamp: "2025-01-02T13:45:00Z", 
-      imageUrl: "/api/assets/Screenshot%202025-06-02%20160820.png",
+      description: "Gauge dashboard displaying threat counts by major regions with real-time monitoring capabilities",
+      timestamp: "2025-01-02T13:45:00Z",
+      imageUrl: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=400&fit=crop",
       dashboardType: "Gauge",
-      size: "1024x299"
+      size: "1920x1080"
     },
     {
       id: "4",
       title: "Temporal Threat Intensity Heatmap",
-      description: "Time-series heatmap showing threat activity patterns across malware, brute force, phishing, SQL injection, and DDoS categories with peak activity on May 30th",
+      description: "Time-series heatmap showing threat activity patterns across different attack categories with 24/7 coverage",
       timestamp: "2025-01-02T12:20:00Z",
-      imageUrl: "/api/assets/Screenshot%202025-06-02%20160958.png",
+      imageUrl: "https://images.unsplash.com/photo-1518186285589-2f7649de83e0?w=800&h=400&fit=crop",
       dashboardType: "Heatmap",
-      size: "1024x287"
+      size: "1920x1080"
     },
     {
       id: "5",
       title: "Attack Volume Trend Analysis",
-      description: "LensBar visualization showing dramatic spike in attack volume reaching 8,000+ incidents on May 30th, with secondary peaks of 1,500-2,000 incidents",
+      description: "Bar chart visualization showing attack volume trends over time with predictive analytics capabilities",
       timestamp: "2025-01-02T11:10:00Z",
-      imageUrl: "/api/assets/Screenshot%202025-06-02%20160751.png",
+      imageUrl: "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=800&h=400&fit=crop",
       dashboardType: "Bar Chart",
-      size: "1024x413"
+      size: "1920x1080"
     },
     {
       id: "6",
       title: "Unified Security Dashboard",
-      description: "Comprehensive multi-panel view combining heatmap, pie chart, gauge metrics, and bar chart analysis for complete threat landscape overview",
+      description: "Comprehensive multi-panel view combining all visualization types for complete threat landscape overview",
       timestamp: "2025-01-02T10:30:00Z",
-      imageUrl: "/api/assets/Screenshot%202025-06-02%20160852.png",
+      imageUrl: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&h=400&fit=crop",
       dashboardType: "Combined Dashboard",
-      size: "1024x512"
+      size: "1920x1080"
     }
   ]
 
@@ -136,7 +133,7 @@ export function SnapshotsSection() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {snapshots.map((snapshot) => {
               const { date, time } = formatTimestamp(snapshot.timestamp)
-              
+
               return (
                 <Card key={snapshot.id} className="visualization-card cyber-border group">
                   <CardHeader className="pb-2">
@@ -147,7 +144,7 @@ export function SnapshotsSection() {
                       </Badge>
                     </div>
                   </CardHeader>
-                  
+
                   <CardContent className="space-y-4">
                     {/* Snapshot Preview */}
                     <div className="relative aspect-video bg-gray-800 rounded-lg overflow-hidden cyber-border">
@@ -155,22 +152,6 @@ export function SnapshotsSection() {
                         src={snapshot.imageUrl}
                         alt={snapshot.title}
                         className="w-full h-full object-cover"
-                        onLoad={(e) => {
-                          console.log('Image loaded successfully:', snapshot.imageUrl)
-                          e.currentTarget.style.display = 'block'
-                        }}
-                        onError={(e) => {
-                          console.error('Failed to load image:', snapshot.imageUrl)
-                          e.currentTarget.style.display = 'none'
-                          const parentEl = e.currentTarget.parentElement!
-                          parentEl.style.background = 'linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%)'
-                          if (!parentEl.querySelector('.fallback-text')) {
-                            const fallbackDiv = document.createElement('div')
-                            fallbackDiv.className = 'fallback-text absolute inset-0 flex items-center justify-center text-muted-foreground text-sm'
-                            fallbackDiv.textContent = 'Image preview unavailable'
-                            parentEl.appendChild(fallbackDiv)
-                          }
-                        }}
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                       <div className="absolute bottom-2 left-2 right-2">
@@ -238,7 +219,7 @@ export function SnapshotsSection() {
                   <Badge variant="secondary">{selectedSnapshot.dashboardType}</Badge>
                 </DialogTitle>
               </DialogHeader>
-              
+
               <div className="space-y-4">
                 {/* Full Size Image */}
                 <div className="relative bg-gray-800 rounded-lg overflow-hidden cyber-border">
@@ -246,21 +227,6 @@ export function SnapshotsSection() {
                     src={selectedSnapshot.imageUrl}
                     alt={selectedSnapshot.title}
                     className="w-full h-auto"
-                    onLoad={(e) => {
-                      console.log('Modal image loaded successfully:', selectedSnapshot.imageUrl)
-                    }}
-                    onError={(e) => {
-                      console.error('Failed to load modal image:', selectedSnapshot.imageUrl)
-                      e.currentTarget.style.display = 'none'
-                      const parentEl = e.currentTarget.parentElement!
-                      parentEl.style.background = 'linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%)'
-                      if (!parentEl.querySelector('.fallback-text')) {
-                        const fallbackDiv = document.createElement('div')
-                        fallbackDiv.className = 'fallback-text absolute inset-0 flex items-center justify-center text-muted-foreground'
-                        fallbackDiv.textContent = 'Preview not available'
-                        parentEl.appendChild(fallbackDiv)
-                      }
-                    }}
                   />
                 </div>
 
