@@ -34,7 +34,7 @@ export function SnapshotsSection() {
       title: "Global Threat Distribution Map",
       description: "Interactive world map showing regional cyber threat distribution with major hotspots in Asia (3,910 threats), Oceania (267), and Africa regions",
       timestamp: "2025-01-02T15:30:00Z",
-      imageUrl: "/attached_assets/repl.png",
+      imageUrl: "/api/assets/repl.png",
       dashboardType: "Map",
       size: "1024x512"
     },
@@ -43,7 +43,7 @@ export function SnapshotsSection() {
       title: "Threat Type Distribution Analysis",
       description: "Comprehensive pie chart breakdown showing malware, DDoS, brute force, phishing, and SQL injection attack distributions across multiple IP ranges",
       timestamp: "2025-01-02T14:15:00Z",
-      imageUrl: "/attached_assets/Screenshot 2025-06-02 161052.png",
+      imageUrl: "/api/assets/Screenshot%202025-06-02%20161052.png",
       dashboardType: "Pie Chart",
       size: "1024x398"
     },
@@ -52,7 +52,7 @@ export function SnapshotsSection() {
       title: "Country-Based Threat Metrics",
       description: "Gauge dashboard displaying threat counts by major regions: United States (4,790), China (1,174), Japan (593), United Kingdom (410), South Korea (363)",
       timestamp: "2025-01-02T13:45:00Z", 
-      imageUrl: "/attached_assets/Screenshot 2025-06-02 160820.png",
+      imageUrl: "/api/assets/Screenshot%202025-06-02%20160820.png",
       dashboardType: "Gauge",
       size: "1024x299"
     },
@@ -61,7 +61,7 @@ export function SnapshotsSection() {
       title: "Temporal Threat Intensity Heatmap",
       description: "Time-series heatmap showing threat activity patterns across malware, brute force, phishing, SQL injection, and DDoS categories with peak activity on May 30th",
       timestamp: "2025-01-02T12:20:00Z",
-      imageUrl: "/attached_assets/Screenshot 2025-06-02 160958.png",
+      imageUrl: "/api/assets/Screenshot%202025-06-02%20160958.png",
       dashboardType: "Heatmap",
       size: "1024x287"
     },
@@ -70,7 +70,7 @@ export function SnapshotsSection() {
       title: "Attack Volume Trend Analysis",
       description: "LensBar visualization showing dramatic spike in attack volume reaching 8,000+ incidents on May 30th, with secondary peaks of 1,500-2,000 incidents",
       timestamp: "2025-01-02T11:10:00Z",
-      imageUrl: "/attached_assets/Screenshot 2025-06-02 160751.png",
+      imageUrl: "/api/assets/Screenshot%202025-06-02%20160751.png",
       dashboardType: "Bar Chart",
       size: "1024x413"
     },
@@ -79,7 +79,7 @@ export function SnapshotsSection() {
       title: "Unified Security Dashboard",
       description: "Comprehensive multi-panel view combining heatmap, pie chart, gauge metrics, and bar chart analysis for complete threat landscape overview",
       timestamp: "2025-01-02T10:30:00Z",
-      imageUrl: "/attached_assets/Screenshot 2025-06-02 160852.png",
+      imageUrl: "/api/assets/Screenshot%202025-06-02%20160852.png",
       dashboardType: "Combined Dashboard",
       size: "1024x512"
     }
