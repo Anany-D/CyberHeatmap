@@ -233,8 +233,9 @@ export function SnapshotsSection() {
                     alt={selectedSnapshot.title}
                     className="w-full h-auto"
                     onError={(e) => {
+                      // Fallback to gradient background if image fails
                       e.currentTarget.style.display = 'none'
-                      e.currentTarget.parentElement!.innerHTML = '<div class="flex items-center justify-center h-64 text-muted-foreground">Preview not available</div>'
+                      e.currentTarget.parentElement!.style.background = 'linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%)'
                     }}
                   />
                 </div>
