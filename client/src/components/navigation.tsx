@@ -73,6 +73,12 @@ export function Navigation({
                 Visualizations
               </button>
               <button 
+                onClick={() => scrollToSection('snapshots')} 
+                className="hover:text-cyber-blue transition-colors"
+              >
+                Snapshots
+              </button>
+              <button 
                 onClick={() => scrollToSection('demo-info')} 
                 className="hover:text-cyber-blue transition-colors"
               >
@@ -152,6 +158,12 @@ export function Navigation({
                 className="block py-2 hover:text-cyber-blue transition-colors w-full text-left"
               >
                 Visualizations
+              </button>
+              <button 
+                onClick={() => scrollToSection('snapshots')} 
+                className="block py-2 hover:text-cyber-blue transition-colors w-full text-left"
+              >
+                Snapshots
               </button>
               <button 
                 onClick={() => scrollToSection('demo-info')} 

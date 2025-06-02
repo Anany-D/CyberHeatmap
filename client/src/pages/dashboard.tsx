@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import { Navigation } from "@/components/navigation"
 import { DashboardSection } from "@/components/dashboard-section"
+import { SnapshotsSection } from "@/components/snapshots-section"
 import { DemoInfo } from "@/components/demo-info"
 import { Button } from "@/components/ui/button"
 import { ChevronDown } from "lucide-react"
@@ -98,6 +99,9 @@ export default function Dashboard() {
 
         {/* Dashboard Visualizations */}
         <DashboardSection searchQuery={searchQuery} />
+
+        {/* Snapshots Section */}
+        <SnapshotsSection />
 
         {/* Demo Info Section */}
         <DemoInfo />
