@@ -31,39 +31,57 @@ export function SnapshotsSection() {
   const snapshots: Snapshot[] = [
     {
       id: "1",
-      title: "Global Threat Map - Peak Activity",
-      description: "Critical threat spike detected in Eastern Europe region with 340% increase in malware attacks",
-      timestamp: "2025-01-02T10:30:00Z",
-      imageUrl: "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPjxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiMxYTFhMWEiLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwYTBhMGEiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48cmVjdCB3aWR0aD0iNjAwIiBoZWlnaHQ9IjQwMCIgZmlsbD0idXJsKCNnKSIvPjx0ZXh0IHg9IjMwMCIgeT0iMjAwIiBmaWxsPSIjMDBmNWZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMjQiPkdsb2JhbCBUaHJlYXQgTWFwPC90ZXh0Pjx0ZXh0IHg9IjMwMCIgeT0iMjMwIiBmaWxsPSIjNjY2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiPklOVEVSQUNUSVZFIE1BUCBWSUVXPC90ZXh0PjxjaXJjbGUgY3g9IjE1MCIgY3k9IjEwMCIgcj0iOCIgZmlsbD0iI2ZmMDAwMCIgb3BhY2l0eT0iMC44Ij48YW5pbWF0ZSBhdHRyaWJ1dGVOYW1lPSJvcGFjaXR5IiB2YWx1ZXM9IjAuODsxOzAuOCIgZHVyPSIycyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiLz48L2NpcmNsZT48Y2lyY2xlIGN4PSI0NTAiIGN5PSIxMjAiIHI9IjYiIGZpbGw9IiNmZjk5MDAiIG9wYWNpdHk9IjAuOCI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0ib3BhY2l0eSIgdmFsdWVzPSIwLjg7MTswLjgiIGR1cj0iMnMiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMzAwIiBjeT0iMjgwIiByPSI1IiBmaWxsPSIjZmZmZjAwIiBvcGFjaXR5PSIwLjgiPjxhbmltYXRlIGF0dHJpYnV0ZU5hbWU9Im9wYWNpdHkiIHZhbHVlcz0iMC44OzE7MC44IiBkdXI9IjJzIiByZXBlYXRDb3VudD0iaW5kZWZpbml0ZSIvPjwvY2lyY2xlPjwvc3ZnPg==",
+      title: "Global Threat Distribution Map",
+      description: "Interactive world map showing regional cyber threat distribution with major hotspots in Asia (3,910 threats), Oceania (267), and Africa regions",
+      timestamp: "2025-01-02T15:30:00Z",
+      imageUrl: "/attached_assets/repl.png",
       dashboardType: "Map",
-      size: "1920x1080"
+      size: "1024x512"
     },
     {
       id: "2", 
-      title: "Threat Distribution Analysis",
-      description: "Monthly threat type breakdown showing ransomware as dominant attack vector (42% increase)",
-      timestamp: "2025-01-02T09:15:00Z",
-      imageUrl: "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPjxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiMxYTFhMWEiLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwYTBhMGEiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48cmVjdCB3aWR0aD0iNjAwIiBoZWlnaHQ9IjQwMCIgZmlsbD0idXJsKCNnKSIvPjx0ZXh0IHg9IjMwMCIgeT0iNTAiIGZpbGw9IiMwMGY1ZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIyNCI+VGhyZWF0IERpc3RyaWJ1dGlvbjwvdGV4dD48Y2lyY2xlIGN4PSIzMDAiIGN5PSIyMDAiIHI9IjEwMCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMDBmNWZmIiBzdHJva2Utd2lkdGg9IjIiLz48cGF0aCBkPSJNIDMwMCwxMDAgQSAxMDAsMTAwIDAgMCwxIDQwMCwyMDAgTCAzMDAsMjAwIFoiIGZpbGw9IiNmZjAwMDAiIG9wYWNpdHk9IjAuNyIvPjxwYXRoIGQ9Ik0gNDAwLDIwMCBBIDEwMCwxMDAgMCAwLDEgMzAwLDMwMCBMIDMwMCwyMDAgWiIgZmlsbD0iI2ZmOTkwMCIgb3BhY2l0eT0iMC43Ii8+PHBhdGggZD0iTSAzMDAsMzAwIEEgMTAwLDEwMCAwIDAsMSAyMDAsMjAwIEwgMzAwLDIwMCBaIiBmaWxsPSIjZmZmZjAwIiBvcGFjaXR5PSIwLjciLz48cGF0aCBkPSJNIDIwMCwyMDAgQSAxMDAsMTAwIDAgMCwxIDMwMCwxMDAgTCAzMDAsMjAwIFoiIGZpbGw9IiMwMGZmMDAiIG9wYWNpdHk9IjAuNyIvPjx0ZXh0IHg9IjEwMCIgeT0iMzUwIiBmaWxsPSIjZmYwMDAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTIiPk1hbHdhcmU6IDM1JTwvdGV4dD48dGV4dCB4PSIyMDAiIHk9IjM1MCIgZmlsbD0iI2ZmOTkwMCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjEyIj5QaGlzaGluZzogMjglPC90ZXh0Pjx0ZXh0IHg9IjMwMCIgeT0iMzUwIiBmaWxsPSIjZmZmZjAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTIiPkREb1M6IDIyJTwvdGV4dD48dGV4dCB4PSI0MDAiIHk9IjM1MCIgZmlsbD0iIzAwZmYwMCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjEyIj5PdGhlcjogMTUlPC90ZXh0Pjwvc3ZnPg==",
+      title: "Threat Type Distribution Analysis",
+      description: "Comprehensive pie chart breakdown showing malware, DDoS, brute force, phishing, and SQL injection attack distributions across multiple IP ranges",
+      timestamp: "2025-01-02T14:15:00Z",
+      imageUrl: "/attached_assets/Screenshot 2025-06-02 161052.png",
       dashboardType: "Pie Chart",
-      size: "1920x1080"
+      size: "1024x398"
     },
     {
       id: "3",
-      title: "Heatmap Intensity Overview",
-      description: "Regional threat intensity visualization revealing new attack patterns in Southeast Asia",
-      timestamp: "2025-01-02T08:45:00Z", 
-      imageUrl: "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPjxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiMxYTFhMWEiLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwYTBhMGEiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48cmVjdCB3aWR0aD0iNjAwIiBoZWlnaHQ9IjQwMCIgZmlsbD0idXJsKCNnKSIvPjx0ZXh0IHg9IjMwMCIgeT0iNTAiIGZpbGw9IiMwMGY1ZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIyNCI+SGVhdG1hcCBJbnRlbnNpdHk8L3RleHQ+PHJlY3QgeD0iNTAiIHk9IjgwIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIGZpbGw9IiNmZjAwMDAiIG9wYWNpdHk9IjAuOCIvPjxyZWN0IHg9IjEwMCIgeT0iODAiIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgZmlsbD0iI2ZmNTUwMCIgb3BhY2l0eT0iMC42Ii8+PHJlY3QgeD0iMTUwIiB5PSI4MCIgd2lkdGg9IjQwIiBoZWlnaHQ9IjQwIiBmaWxsPSIjZmZhYTAwIiBvcGFjaXR5PSIwLjQiLz48cmVjdCB4PSIyMDAiIHk9IjgwIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIGZpbGw9IiNmZmZmMDAiIG9wYWNpdHk9IjAuMyIvPjxyZWN0IHg9IjI1MCIgeT0iODAiIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgZmlsbD0iI2FhZmYwMCIgb3BhY2l0eT0iMC4yIi8+PHJlY3QgeD0iNTAiIHk9IjEzMCIgd2lkdGg9IjQwIiBoZWlnaHQ9IjQwIiBmaWxsPSIjZmY3NzAwIiBvcGFjaXR5PSIwLjciLz48cmVjdCB4PSIxMDAiIHk9IjEzMCIgd2lkdGg9IjQwIiBoZWlnaHQ9IjQwIiBmaWxsPSIjZmZiYjAwIiBvcGFjaXR5PSIwLjUiLz48cmVjdCB4PSIxNTAiIHk9IjEzMCIgd2lkdGg9IjQwIiBoZWlnaHQ9IjQwIiBmaWxsPSIjZmZkZDAwIiBvcGFjaXR5PSIwLjQiLz48cmVjdCB4PSIyMDAiIHk9IjEzMCIgd2lkdGg9IjQwIiBoZWlnaHQ9IjQwIiBmaWxsPSIjZGRmZjAwIiBvcGFjaXR5PSIwLjMiLz48cmVjdCB4PSIyNTAiIHk9IjEzMCIgd2lkdGg9IjQwIiBoZWlnaHQ9IjQwIiBmaWxsPSIjNzJmZjAwIiBvcGFjaXR5PSIwLjIiLz48dGV4dCB4PSI1MCIgeT0iMjUwIiBmaWxsPSIjZmYwMDAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTIiPkhpZ2ggSW50ZW5zaXR5PC90ZXh0Pjx0ZXh0IHg9IjI1MCIgeT0iMjUwIiBmaWxsPSIjMDBmZjAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTIiPkxvdyBJbnRlbnNpdHk8L3RleHQ+PC9zdmc+",
-      dashboardType: "Heatmap",
-      size: "1920x1080"
+      title: "Country-Based Threat Metrics",
+      description: "Gauge dashboard displaying threat counts by major regions: United States (4,790), China (1,174), Japan (593), United Kingdom (410), South Korea (363)",
+      timestamp: "2025-01-02T13:45:00Z", 
+      imageUrl: "/attached_assets/Screenshot 2025-06-02 160820.png",
+      dashboardType: "Gauge",
+      size: "1024x299"
     },
     {
       id: "4",
-      title: "LensBar Trend Analysis",
-      description: "7-day attack trend analysis showing coordinated campaign across multiple threat vectors",
-      timestamp: "2025-01-02T07:20:00Z",
-      imageUrl: "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPjxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiMxYTFhMWEiLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwYTBhMGEiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48cmVjdCB3aWR0aD0iNjAwIiBoZWlnaHQ9IjQwMCIgZmlsbD0idXJsKCNnKSIvPjx0ZXh0IHg9IjMwMCIgeT0iNTAiIGZpbGw9IiMwMGY1ZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIyNCI+QXR0YWNrIFBhdHRlcm4gQW5hbHlzaXM8L3RleHQ+PHJlY3QgeD0iODAiIHk9IjIwMCIgd2lkdGg9IjQwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iI2ZmMDAwMCIgb3BhY2l0eT0iMC44Ii8+PHJlY3QgeD0iMTQwIiB5PSIxNjAiIHdpZHRoPSI0MCIgaGVpZ2h0PSIxNDAiIGZpbGw9IiNmZjU1MDAiIG9wYWNpdHk9IjAuOCIvPjxyZWN0IHg9IjIwMCIgeT0iMTIwIiB3aWR0aD0iNDAiIGhlaWdodD0iMTgwIiBmaWxsPSIjZmZhYTAwIiBvcGFjaXR5PSIwLjgiLz48cmVjdCB4PSIyNjAiIHk9IjE4MCIgd2lkdGg9IjQwIiBoZWlnaHQ9IjEyMCIgZmlsbD0iI2ZmZmYwMCIgb3BhY2l0eT0iMC44Ii8+PHJlY3QgeD0iMzIwIiB5PSIxNDAiIHdpZHRoPSI0MCIgaGVpZ2h0PSIxNjAiIGZpbGw9IiNhYWZmMDAiIG9wYWNpdHk9IjAuOCIvPjxyZWN0IHg9IjM4MCIgeT0iMTAwIiB3aWR0aD0iNDAiIGhlaWdodD0iMjAwIiBmaWxsPSIjMDBmZjAwIiBvcGFjaXR5PSIwLjgiLz48cmVjdCB4PSI0NDAiIHk9IjgwIiB3aWR0aD0iNDAiIGhlaWdodD0iMjIwIiBmaWxsPSIjMDBmZmZmIiBvcGFjaXR5PSIwLjgiLz48dGV4dCB4PSIxMDAiIHk9IjMzMCIgZmlsbD0iIzY2NiIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjEwIj5KYW48L3RleHQ+PHRleHQgeD0iMTYwIiB5PSIzMzAiIGZpbGw9IiM2NjYiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxMCI+RmViPC90ZXh0Pjx0ZXh0IHg9IjIyMCIgeT0iMzMwIiBmaWxsPSIjNjY2IiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTAiPk1hcjwvdGV4dD48dGV4dCB4PSIyODAiIHk9IjMzMCIgZmlsbD0iIzY2NiIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjEwIj5BcHI8L3RleHQ+PHRleHQgeD0iMzQwIiB5PSIzMzAiIGZpbGw9IiM2NjYiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxMCI+TWF5PC90ZXh0Pjx0ZXh0IHg9IjQwMCIgeT0iMzMwIiBmaWxsPSIjNjY2IiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTAiPkp1bjwvdGV4dD48dGV4dCB4PSI0NjAiIHk9IjMzMCIgZmlsbD0iIzY2NiIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjEwIj5KdWw8L3RleHQ+PC9zdmc+",
+      title: "Temporal Threat Intensity Heatmap",
+      description: "Time-series heatmap showing threat activity patterns across malware, brute force, phishing, SQL injection, and DDoS categories with peak activity on May 30th",
+      timestamp: "2025-01-02T12:20:00Z",
+      imageUrl: "/attached_assets/Screenshot 2025-06-02 160958.png",
+      dashboardType: "Heatmap",
+      size: "1024x287"
+    },
+    {
+      id: "5",
+      title: "Attack Volume Trend Analysis",
+      description: "LensBar visualization showing dramatic spike in attack volume reaching 8,000+ incidents on May 30th, with secondary peaks of 1,500-2,000 incidents",
+      timestamp: "2025-01-02T11:10:00Z",
+      imageUrl: "/attached_assets/Screenshot 2025-06-02 160751.png",
       dashboardType: "Bar Chart",
-      size: "1920x1080"
+      size: "1024x413"
+    },
+    {
+      id: "6",
+      title: "Unified Security Dashboard",
+      description: "Comprehensive multi-panel view combining heatmap, pie chart, gauge metrics, and bar chart analysis for complete threat landscape overview",
+      timestamp: "2025-01-02T10:30:00Z",
+      imageUrl: "/attached_assets/Screenshot 2025-06-02 160852.png",
+      dashboardType: "Combined Dashboard",
+      size: "1024x512"
     }
   ]
 
