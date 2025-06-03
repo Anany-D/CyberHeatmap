@@ -7,8 +7,7 @@ export default defineConfig(async () => ({
   plugins: [
     react(),
     runtimeErrorOverlay(),
-    ...(process.env.NODE_ENV !== "production" &&
-    process.env.REPL_ID !== undefined
+    ...(process.env.NODE_ENV !== "production" && process.env.REPL_ID !== undefined
       ? [
           (await import("@replit/vite-plugin-cartographer")).cartographer(),
         ]
@@ -25,5 +24,7 @@ export default defineConfig(async () => ({
   build: {
     outDir: path.resolve(__dirname, "client", "dist"),
     emptyOutDir: true,
+    sourcemap: false,  // Optional: disable sourcemaps for smaller builds
+    chunkSizeWarningLimit: 1000, // Optional: raise warning limit if your chunks are large
   },
 }));
