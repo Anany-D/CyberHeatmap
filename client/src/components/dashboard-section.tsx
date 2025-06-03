@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { VisualizationCard } from "./visualization-card"
 import { ChartContainer, ChartTooltip, ChartTooltipContent, ChartLegend, ChartLegendContent } from "./ui/chart"
-import { PieChart, Pie, BarChart, Bar, XAxis, YAxis, CartesianGrid, ResponsiveContainer, Cell } from "recharts"
+import { PieChart, Pie, BarChart, Bar, XAxis, YAxis, CartesianGrid, ResponsiveContainer, Cell, LineChart, Line, Area, AreaChart } from "recharts"
 
 interface DashboardSectionProps {
   searchQuery: string
@@ -33,55 +33,113 @@ export function DashboardSection({ searchQuery }: DashboardSectionProps) {
         <div className="absolute inset-0 cyber-bg p-4">
           <div className="text-white mb-4">
             <h4 className="text-lg font-semibold mb-2">Global Cyber Threat Distribution (Demo)</h4>
+            <div className="text-sm text-gray-400">Interactive world map simulation</div>
           </div>
-          <ChartContainer
-            config={{
-              critical: {
-                label: "Critical",
-                color: "hsl(0, 84%, 60%)",
-              },
-              high: {
-                label: "High", 
-                color: "hsl(25, 95%, 53%)",
-              },
-              medium: {
-                label: "Medium",
-                color: "hsl(45, 93%, 47%)",
-              },
-              low: {
-                label: "Low",
-                color: "hsl(120, 61%, 50%)",
-              },
-            }}
-            className="h-[400px]"
-          >
-            <BarChart
-              data={[
-                { region: "North America", critical: 23, high: 45, medium: 120, low: 340 },
-                { region: "Europe", critical: 18, high: 156, medium: 230, low: 890 },
-                { region: "Asia Pacific", critical: 35, high: 89, medium: 891, low: 1200 },
-                { region: "Latin America", critical: 8, high: 23, medium: 67, low: 234 },
-                { region: "Africa", critical: 12, high: 34, medium: 156, low: 567 },
-                { region: "Middle East", critical: 15, high: 67, medium: 189, low: 423 }
-              ]}
-            >
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis 
-                dataKey="region" 
-                tick={{ fill: 'white', fontSize: 12 }}
-                angle={-45}
-                textAnchor="end"
-                height={80}
-              />
-              <YAxis tick={{ fill: 'white' }} />
-              <ChartTooltip content={<ChartTooltipContent />} />
-              <ChartLegend content={<ChartLegendContent />} />
-              <Bar dataKey="critical" stackId="a" fill="var(--color-critical)" />
-              <Bar dataKey="high" stackId="a" fill="var(--color-high)" />
-              <Bar dataKey="medium" stackId="a" fill="var(--color-medium)" />
-              <Bar dataKey="low" stackId="a" fill="var(--color-low)" />
-            </BarChart>
-          </ChartContainer>
+          <div className="relative h-[400px] bg-gray-800/50 rounded border border-cyber-blue/30 overflow-hidden">
+            {/* Interactive World Map Simulation */}
+            <div className="absolute inset-0 flex items-center justify-center">
+              <svg viewBox="0 0 800 400" className="w-full h-full">
+                {/* Background */}
+                <rect width="800" height="400" fill="#1e293b" />
+                
+                {/* Continents (simplified shapes) */}
+                <g fill="#374151" stroke="#475569" strokeWidth="1">
+                  {/* North America */}
+                  <path d="M100 80 L200 70 L250 120 L200 180 L120 160 Z" />
+                  {/* Europe */}
+                  <path d="M350 60 L450 55 L460 100 L400 120 L340 90 Z" />
+                  {/* Asia */}
+                  <path d="M450 50 L650 45 L680 150 L500 140 L440 80 Z" />
+                  {/* Africa */}
+                  <path d="M320 140 L420 135 L440 280 L360 300 L300 200 Z" />
+                  {/* South America */}
+                  <path d="M180 200 L240 195 L260 320 L200 340 L160 280 Z" />
+                  {/* Australia */}
+                  <path d="M580 260 L650 255 L660 290 L590 295 Z" />
+                </g>
+                
+                {/* Threat Indicators with Animation */}
+                <g>
+                  {/* Critical Threats - Red */}
+                  <circle cx="150" cy="120" r="8" fill="#ef4444" opacity="0.9" className="animate-pulse">
+                    <animate attributeName="r" values="6;12;6" dur="2s" repeatCount="indefinite"/>
+                  </circle>
+                  <circle cx="600" cy="100" r="10" fill="#dc2626" opacity="0.9" className="animate-pulse">
+                    <animate attributeName="r" values="8;14;8" dur="1.5s" repeatCount="indefinite"/>
+                  </circle>
+                  <circle cx="380" cy="250" r="6" fill="#ef4444" opacity="0.8" className="animate-pulse">
+                    <animate attributeName="r" values="4;10;4" dur="2.5s" repeatCount="indefinite"/>
+                  </circle>
+                  
+                  {/* High Threats - Orange */}
+                  <circle cx="400" cy="80" r="6" fill="#f97316" opacity="0.8">
+                    <animate attributeName="r" values="4;8;4" dur="3s" repeatCount="indefinite"/>
+                  </circle>
+                  <circle cx="220" cy="260" r="5" fill="#ea580c" opacity="0.8">
+                    <animate attributeName="r" values="3;7;3" dur="2.8s" repeatCount="indefinite"/>
+                  </circle>
+                  <circle cx="520" cy="120" r="7" fill="#f97316" opacity="0.8">
+                    <animate attributeName="r" values="5;9;5" dur="2.2s" repeatCount="indefinite"/>
+                  </circle>
+                  
+                  {/* Medium Threats - Yellow */}
+                  <circle cx="320" cy="70" r="4" fill="#eab308" opacity="0.7">
+                    <animate attributeName="r" values="2;6;2" dur="3.5s" repeatCount="indefinite"/>
+                  </circle>
+                  <circle cx="180" cy="200" r="4" fill="#ca8a04" opacity="0.7">
+                    <animate attributeName="r" values="2;6;2" dur="3.2s" repeatCount="indefinite"/>
+                  </circle>
+                  <circle cx="620" cy="275" r="3" fill="#eab308" opacity="0.7">
+                    <animate attributeName="r" values="1;5;1" dur="4s" repeatCount="indefinite"/>
+                  </circle>
+                  
+                  {/* Low Threats - Green */}
+                  <circle cx="280" cy="160" r="3" fill="#22c55e" opacity="0.6">
+                    <animate attributeName="r" values="1;4;1" dur="4.5s" repeatCount="indefinite"/>
+                  </circle>
+                  <circle cx="480" cy="80" r="2" fill="#16a34a" opacity="0.6">
+                    <animate attributeName="r" values="1;3;1" dur="5s" repeatCount="indefinite"/>
+                  </circle>
+                </g>
+                
+                {/* Grid lines */}
+                <defs>
+                  <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                    <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#475569" strokeWidth="0.5" opacity="0.3"/>
+                  </pattern>
+                </defs>
+                <rect width="800" height="400" fill="url(#grid)" />
+              </svg>
+            </div>
+            
+            {/* Legend */}
+            <div className="absolute bottom-4 left-4 bg-gray-900/80 rounded p-3 text-xs">
+              <div className="grid grid-cols-2 gap-2">
+                <div className="flex items-center gap-2">
+                  <div className="w-3 h-3 rounded-full bg-red-500"></div>
+                  <span className="text-red-400">Critical: 3</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-3 h-3 rounded-full bg-orange-500"></div>
+                  <span className="text-orange-400">High: 3</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+                  <span className="text-yellow-400">Medium: 3</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-3 h-3 rounded-full bg-green-500"></div>
+                  <span className="text-green-400">Low: 2</span>
+                </div>
+              </div>
+            </div>
+            
+            {/* Real-time indicator */}
+            <div className="absolute top-4 right-4 flex items-center gap-2 bg-gray-900/80 rounded px-3 py-1 text-xs">
+              <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
+              <span className="text-green-400">Live Simulation</span>
+            </div>
+          </div>
         </div>
       )
     },
@@ -155,44 +213,89 @@ export function DashboardSection({ searchQuery }: DashboardSectionProps) {
       demoContent: (
         <div className="absolute inset-0 cyber-bg p-4">
           <div className="text-white mb-4">
-            <h4 className="text-lg font-semibold mb-2">National Threat Level (Demo)</h4>
+            <h4 className="text-lg font-semibold mb-2">Threat Intensity Heatmap (Demo)</h4>
+            <div className="text-sm text-gray-400">Real-time threat levels across different vectors</div>
           </div>
-          <ChartContainer
-            config={{
-              threats: {
-                label: "Threat Level",
-                color: "hsl(25, 95%, 53%)",
-              },
-            }}
-            className="h-[400px]"
-          >
-            <BarChart
-              data={[
-                { category: "Network", level: 85, color: "hsl(0, 84%, 60%)" },
-                { category: "Email", level: 72, color: "hsl(25, 95%, 53%)" },
-                { category: "Web", level: 68, color: "hsl(45, 93%, 47%)" },
-                { category: "Mobile", level: 45, color: "hsl(120, 61%, 50%)" },
-                { category: "IoT", level: 38, color: "hsl(240, 61%, 50%)" },
-              ]}
-              layout="horizontal"
-            >
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis type="number" domain={[0, 100]} tick={{ fill: 'white' }} />
-              <YAxis dataKey="category" type="category" tick={{ fill: 'white' }} width={60} />
-              <ChartTooltip content={<ChartTooltipContent />} />
-              <Bar dataKey="level" fill="var(--color-threats)">
-                {[
-                  { category: "Network", level: 85, color: "hsl(0, 84%, 60%)" },
-                  { category: "Email", level: 72, color: "hsl(25, 95%, 53%)" },
-                  { category: "Web", level: 68, color: "hsl(45, 93%, 47%)" },
-                  { category: "Mobile", level: 45, color: "hsl(120, 61%, 50%)" },
-                  { category: "IoT", level: 38, color: "hsl(240, 61%, 50%)" },
-                ].map((entry, index) => (
-                  <Cell key={`cell-${index}`} fill={entry.color} />
-                ))}
-              </Bar>
-            </BarChart>
-          </ChartContainer>
+          <div className="h-[400px] flex flex-col gap-4">
+            {/* Heatmap Grid */}
+            <div className="grid grid-cols-7 gap-1 flex-1">
+              {Array.from({ length: 35 }, (_, i) => {
+                const intensity = Math.floor(Math.random() * 4);
+                const colors = ['bg-green-500/30', 'bg-yellow-500/50', 'bg-orange-500/70', 'bg-red-500/90'];
+                const labels = ['Low', 'Medium', 'High', 'Critical'];
+                return (
+                  <div
+                    key={i}
+                    className={`${colors[intensity]} border border-gray-600 rounded flex items-center justify-center text-xs font-semibold cursor-pointer hover:scale-105 transition-transform`}
+                    title={`Threat Level: ${labels[intensity]}`}
+                  >
+                    {intensity + 1}
+                  </div>
+                );
+              })}
+            </div>
+            
+            {/* Time Series for Heatmap */}
+            <div className="h-32">
+              <ChartContainer
+                config={{
+                  intensity: {
+                    label: "Threat Intensity",
+                    color: "hsl(0, 84%, 60%)",
+                  },
+                }}
+                className="h-full"
+              >
+                <AreaChart
+                  data={[
+                    { time: "00:00", intensity: 45 },
+                    { time: "04:00", intensity: 32 },
+                    { time: "08:00", intensity: 78 },
+                    { time: "12:00", intensity: 89 },
+                    { time: "16:00", intensity: 67 },
+                    { time: "20:00", intensity: 56 },
+                  ]}
+                >
+                  <defs>
+                    <linearGradient id="threatGradient" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="5%" stopColor="#ef4444" stopOpacity={0.8}/>
+                      <stop offset="95%" stopColor="#ef4444" stopOpacity={0.1}/>
+                    </linearGradient>
+                  </defs>
+                  <XAxis dataKey="time" tick={{ fill: 'white', fontSize: 10 }} />
+                  <YAxis tick={{ fill: 'white', fontSize: 10 }} />
+                  <ChartTooltip content={<ChartTooltipContent />} />
+                  <Area
+                    type="monotone"
+                    dataKey="intensity"
+                    stroke="#ef4444"
+                    fillOpacity={1}
+                    fill="url(#threatGradient)"
+                  />
+                </AreaChart>
+              </ChartContainer>
+            </div>
+            
+            {/* Legend */}
+            <div className="flex justify-center gap-4 text-xs">
+              <div className="flex items-center gap-1">
+                <div className="w-3 h-3 bg-green-500/30 rounded"></div>
+                <span>Low (1)</span>
+              </div>
+              <div className="flex items-center gap-1">
+                <div className="w-3 h-3 bg-yellow-500/50 rounded"></div>
+                <span>Medium (2)</span>
+              </div>
+              <div className="flex items-center gap-1">
+                <div className="w-3 h-3 bg-orange-500/70 rounded"></div>
+                <span>High (3)</span>
+              </div>
+              <div className="flex items-center gap-1">
+                <div className="w-3 h-3 bg-red-500/90 rounded"></div>
+                <span>Critical (4)</span>
+              </div>
+            </div>
+          </div>
         </div>
       )
     },
