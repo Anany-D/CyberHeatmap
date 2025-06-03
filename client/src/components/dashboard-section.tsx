@@ -1,5 +1,7 @@
 import { useState } from "react"
 import { VisualizationCard } from "./visualization-card"
+import { ChartContainer, ChartTooltip, ChartTooltipContent, ChartLegend, ChartLegendContent } from "./ui/chart"
+import { PieChart, Pie, BarChart, Bar, XAxis, YAxis, CartesianGrid, ResponsiveContainer, Cell } from "recharts"
 
 interface DashboardSectionProps {
   searchQuery: string
@@ -31,21 +33,55 @@ export function DashboardSection({ searchQuery }: DashboardSectionProps) {
         <div className="absolute inset-0 cyber-bg p-4">
           <div className="text-white mb-4">
             <h4 className="text-lg font-semibold mb-2">Global Cyber Threat Distribution (Demo)</h4>
-            <div className="flex flex-wrap gap-4 text-sm">
-              <span className="text-red-400">🔴 Critical: 23</span>
-              <span className="text-orange-400">🟠 High: 156</span>
-              <span className="text-yellow-400">🟡 Medium: 891</span>
-              <span className="text-green-400">🟢 Low: 2,341</span>
-            </div>
           </div>
-          <div className="relative w-full h-80 bg-gray-800 rounded cyber-border">
-            <div className="absolute top-20 left-20 w-3 h-3 bg-red-500 rounded-full pulse-cyber" title="Critical Threat: North America"></div>
-            <div className="absolute top-16 right-32 w-2 h-2 bg-orange-500 rounded-full pulse-cyber" title="High Threat: Europe"></div>
-            <div className="absolute bottom-24 left-1/2 w-2 h-2 bg-yellow-500 rounded-full pulse-cyber" title="Medium Threat: Africa"></div>
-            <div className="absolute top-32 right-16 w-3 h-3 bg-red-500 rounded-full pulse-cyber" title="Critical Threat: Asia"></div>
-            <div className="absolute bottom-16 right-24 w-2 h-2 bg-green-500 rounded-full pulse-cyber" title="Low Threat: Australia"></div>
-            <div className="text-center pt-32 text-gray-400">🌍 Interactive Global Threat Map (Demo)</div>
-          </div>
+          <ChartContainer
+            config={{
+              critical: {
+                label: "Critical",
+                color: "hsl(0, 84%, 60%)",
+              },
+              high: {
+                label: "High", 
+                color: "hsl(25, 95%, 53%)",
+              },
+              medium: {
+                label: "Medium",
+                color: "hsl(45, 93%, 47%)",
+              },
+              low: {
+                label: "Low",
+                color: "hsl(120, 61%, 50%)",
+              },
+            }}
+            className="h-[400px]"
+          >
+            <BarChart
+              data={[
+                { region: "North America", critical: 23, high: 45, medium: 120, low: 340 },
+                { region: "Europe", critical: 18, high: 156, medium: 230, low: 890 },
+                { region: "Asia Pacific", critical: 35, high: 89, medium: 891, low: 1200 },
+                { region: "Latin America", critical: 8, high: 23, medium: 67, low: 234 },
+                { region: "Africa", critical: 12, high: 34, medium: 156, low: 567 },
+                { region: "Middle East", critical: 15, high: 67, medium: 189, low: 423 }
+              ]}
+            >
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis 
+                dataKey="region" 
+                tick={{ fill: 'white', fontSize: 12 }}
+                angle={-45}
+                textAnchor="end"
+                height={80}
+              />
+              <YAxis tick={{ fill: 'white' }} />
+              <ChartTooltip content={<ChartTooltipContent />} />
+              <ChartLegend content={<ChartLegendContent />} />
+              <Bar dataKey="critical" stackId="a" fill="var(--color-critical)" />
+              <Bar dataKey="high" stackId="a" fill="var(--color-high)" />
+              <Bar dataKey="medium" stackId="a" fill="var(--color-medium)" />
+              <Bar dataKey="low" stackId="a" fill="var(--color-low)" />
+            </BarChart>
+          </ChartContainer>
         </div>
       )
     },
@@ -56,17 +92,57 @@ export function DashboardSection({ searchQuery }: DashboardSectionProps) {
       description: "Pie chart visualization showing distribution of different threat types and their prevalence",
       dashboardUrl: `${baseUrl}/app/dashboards#/view/6ea6bd60-3efb-11f0-a5ea-5bd6f73155c2?embed=true&_g=(filters:!(),refreshInterval:(pause:!t,value:0),time:(from:now-7d,to:now))&_a=(description:'',filters:!(),fullScreenMode:!f,options:(hidePanelTitles:!f,useMargins:!t),query:(language:kuery,query:''),timeRestore:!f,title:'Piechart%20Dashboard',viewMode:view)`,
       demoContent: (
-        <div className="absolute inset-0 cyber-bg p-4 flex items-center justify-center">
-          <div className="text-center">
-            <h4 className="text-lg font-semibold mb-4 text-white">Threat Type Distribution (Demo)</h4>
-            <div className="w-64 h-64 rounded-full border-4 border-cyber-blue mx-auto mb-4 bg-gradient-conic from-red-500 via-orange-500 via-yellow-500 to-green-500"></div>
-            <div className="grid grid-cols-2 gap-2 text-sm">
-              <div className="text-red-400">🔴 Malware: 35%</div>
-              <div className="text-orange-400">🟠 Phishing: 28%</div>
-              <div className="text-yellow-400">🟡 DDoS: 22%</div>
-              <div className="text-green-400">🟢 Other: 15%</div>
-            </div>
+        <div className="absolute inset-0 cyber-bg p-4">
+          <div className="text-white mb-4">
+            <h4 className="text-lg font-semibold mb-2">Threat Type Distribution (Demo)</h4>
           </div>
+          <ChartContainer
+            config={{
+              malware: {
+                label: "Malware",
+                color: "hsl(0, 84%, 60%)",
+              },
+              phishing: {
+                label: "Phishing", 
+                color: "hsl(25, 95%, 53%)",
+              },
+              ddos: {
+                label: "DDoS",
+                color: "hsl(45, 93%, 47%)",
+              },
+              other: {
+                label: "Other",
+                color: "hsl(120, 61%, 50%)",
+              },
+            }}
+            className="h-[400px]"
+          >
+            <PieChart>
+              <ChartTooltip
+                cursor={false}
+                content={<ChartTooltipContent hideLabel />}
+              />
+              <Pie
+                data={[
+                  { name: "malware", value: 35, fill: "var(--color-malware)" },
+                  { name: "phishing", value: 28, fill: "var(--color-phishing)" },
+                  { name: "ddos", value: 22, fill: "var(--color-ddos)" },
+                  { name: "other", value: 15, fill: "var(--color-other)" },
+                ]}
+                dataKey="value"
+                nameKey="name"
+                cx="50%"
+                cy="50%"
+                outerRadius={100}
+                innerRadius={40}
+                strokeWidth={2}
+              />
+              <ChartLegend
+                content={<ChartLegendContent nameKey="name" />}
+                className="-translate-y-2 flex-wrap gap-2 [&>*]:basis-1/4 [&>*]:justify-center"
+              />
+            </PieChart>
+          </ChartContainer>
         </div>
       )
     },
@@ -77,20 +153,46 @@ export function DashboardSection({ searchQuery }: DashboardSectionProps) {
       description: "Real-time heatmap visualization showing threat intensity across different regions and categories",
       dashboardUrl: `${baseUrl}/app/dashboards#/view/df1f4fd0-3efb-11f0-a5ea-5bd6f73155c2?embed=true&_g=(filters:!(),refreshInterval:(pause:!t,value:0),time:(from:now-7d,to:now))&_a=(description:'',filters:!(),fullScreenMode:!f,options:(hidePanelTitles:!f,useMargins:!t),query:(language:kuery,query:''),timeRestore:!f,title:'Heatmap%20Dashboard',viewMode:view)`,
       demoContent: (
-        <div className="absolute inset-0 cyber-bg p-4 flex items-center justify-center">
-          <div className="text-center">
-            <h4 className="text-lg font-semibold mb-4 text-white">National Threat Level (Demo)</h4>
-            <div className="relative w-48 h-48 mx-auto mb-4">
-              <div className="w-full h-full rounded-full border-8 border-orange-500 bg-gradient-radial from-orange-500/20 to-transparent"></div>
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-orange-400">HIGH</div>
-                  <div className="text-sm text-gray-400">Threat Level</div>
-                </div>
-              </div>
-            </div>
-            <div className="text-sm text-orange-400">Current Status: Elevated Risk</div>
+        <div className="absolute inset-0 cyber-bg p-4">
+          <div className="text-white mb-4">
+            <h4 className="text-lg font-semibold mb-2">National Threat Level (Demo)</h4>
           </div>
+          <ChartContainer
+            config={{
+              threats: {
+                label: "Threat Level",
+                color: "hsl(25, 95%, 53%)",
+              },
+            }}
+            className="h-[400px]"
+          >
+            <BarChart
+              data={[
+                { category: "Network", level: 85, color: "hsl(0, 84%, 60%)" },
+                { category: "Email", level: 72, color: "hsl(25, 95%, 53%)" },
+                { category: "Web", level: 68, color: "hsl(45, 93%, 47%)" },
+                { category: "Mobile", level: 45, color: "hsl(120, 61%, 50%)" },
+                { category: "IoT", level: 38, color: "hsl(240, 61%, 50%)" },
+              ]}
+              layout="horizontal"
+            >
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis type="number" domain={[0, 100]} tick={{ fill: 'white' }} />
+              <YAxis dataKey="category" type="category" tick={{ fill: 'white' }} width={60} />
+              <ChartTooltip content={<ChartTooltipContent />} />
+              <Bar dataKey="level" fill="var(--color-threats)">
+                {[
+                  { category: "Network", level: 85, color: "hsl(0, 84%, 60%)" },
+                  { category: "Email", level: 72, color: "hsl(25, 95%, 53%)" },
+                  { category: "Web", level: 68, color: "hsl(45, 93%, 47%)" },
+                  { category: "Mobile", level: 45, color: "hsl(120, 61%, 50%)" },
+                  { category: "IoT", level: 38, color: "hsl(240, 61%, 50%)" },
+                ].map((entry, index) => (
+                  <Cell key={`cell-${index}`} fill={entry.color} />
+                ))}
+              </Bar>
+            </BarChart>
+          </ChartContainer>
         </div>
       )
     },
@@ -105,32 +207,38 @@ export function DashboardSection({ searchQuery }: DashboardSectionProps) {
           <div className="text-white mb-4">
             <h4 className="text-lg font-semibold mb-2">Attack Pattern Analysis (Demo)</h4>
           </div>
-          <div className="h-80 flex items-end justify-around px-8">
-            <div className="flex flex-col items-center">
-              <div className="w-8 h-32 bg-red-500 rounded-t"></div>
-              <span className="text-xs mt-2 text-gray-400">Jan</span>
-            </div>
-            <div className="flex flex-col items-center">
-              <div className="w-8 h-40 bg-orange-500 rounded-t"></div>
-              <span className="text-xs mt-2 text-gray-400">Feb</span>
-            </div>
-            <div className="flex flex-col items-center">
-              <div className="w-8 h-48 bg-yellow-500 rounded-t"></div>
-              <span className="text-xs mt-2 text-gray-400">Mar</span>
-            </div>
-            <div className="flex flex-col items-center">
-              <div className="w-8 h-36 bg-green-500 rounded-t"></div>
-              <span className="text-xs mt-2 text-gray-400">Apr</span>
-            </div>
-            <div className="flex flex-col items-center">
-              <div className="w-8 h-44 bg-blue-500 rounded-t"></div>
-              <span className="text-xs mt-2 text-gray-400">May</span>
-            </div>
-            <div className="flex flex-col items-center">
-              <div className="w-8 h-52 bg-purple-500 rounded-t"></div>
-              <span className="text-xs mt-2 text-gray-400">Jun</span>
-            </div>
-          </div>
+          <ChartContainer
+            config={{
+              attacks: {
+                label: "Attacks",
+                color: "hsl(0, 84%, 60%)",
+              },
+              blocked: {
+                label: "Blocked",
+                color: "hsl(120, 61%, 50%)",
+              },
+            }}
+            className="h-[400px]"
+          >
+            <BarChart
+              data={[
+                { month: "Jan", attacks: 1240, blocked: 1180 },
+                { month: "Feb", attacks: 1580, blocked: 1420 },
+                { month: "Mar", attacks: 1890, blocked: 1650 },
+                { month: "Apr", attacks: 1450, blocked: 1320 },
+                { month: "May", attacks: 1760, blocked: 1580 },
+                { month: "Jun", attacks: 2100, blocked: 1890 },
+              ]}
+            >
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="month" tick={{ fill: 'white' }} />
+              <YAxis tick={{ fill: 'white' }} />
+              <ChartTooltip content={<ChartTooltipContent />} />
+              <ChartLegend content={<ChartLegendContent />} />
+              <Bar dataKey="attacks" fill="var(--color-attacks)" />
+              <Bar dataKey="blocked" fill="var(--color-blocked)" />
+            </BarChart>
+          </ChartContainer>
         </div>
       )
     },
@@ -146,16 +254,53 @@ export function DashboardSection({ searchQuery }: DashboardSectionProps) {
             <h4 className="text-lg font-semibold mb-2">Geographic Threat Analysis (Demo)</h4>
             <div className="text-sm text-gray-400">Attack vectors and target analysis by region</div>
           </div>
-          <div className="relative w-full h-80 bg-gray-800 rounded cyber-border">
-            <div className="absolute inset-4 bg-gradient-to-br from-blue-900/30 to-purple-900/30 rounded">
-              <div className="absolute top-10 left-16 w-4 h-4 bg-red-500 rounded-full pulse-cyber"></div>
-              <div className="absolute top-8 right-20 w-3 h-3 bg-orange-500 rounded-full pulse-cyber"></div>
-              <div className="absolute bottom-16 left-1/3 w-2 h-2 bg-yellow-500 rounded-full pulse-cyber"></div>
-              <div className="absolute top-20 right-12 w-4 h-4 bg-red-500 rounded-full pulse-cyber"></div>
-              <div className="absolute bottom-12 right-16 w-2 h-2 bg-green-500 rounded-full pulse-cyber"></div>
-              <div className="text-center pt-24 text-gray-400">🗺️ Geographic Attack Vector Analysis</div>
-            </div>
-          </div>
+          <ChartContainer
+            config={{
+              usa: {
+                label: "USA",
+                color: "hsl(0, 84%, 60%)",
+              },
+              china: {
+                label: "China",
+                color: "hsl(25, 95%, 53%)",
+              },
+              russia: {
+                label: "Russia", 
+                color: "hsl(45, 93%, 47%)",
+              },
+              germany: {
+                label: "Germany",
+                color: "hsl(120, 61%, 50%)",
+              },
+              others: {
+                label: "Others",
+                color: "hsl(240, 61%, 50%)",
+              },
+            }}
+            className="h-[400px]"
+          >
+            <BarChart
+              data={[
+                { time: "00:00", usa: 120, china: 89, russia: 67, germany: 45, others: 234 },
+                { time: "04:00", usa: 89, china: 123, russia: 78, germany: 56, others: 189 },
+                { time: "08:00", usa: 156, china: 145, russia: 89, germany: 67, others: 267 },
+                { time: "12:00", usa: 234, china: 178, russia: 123, germany: 89, others: 345 },
+                { time: "16:00", usa: 189, china: 156, russia: 98, germany: 78, others: 289 },
+                { time: "20:00", usa: 145, china: 134, russia: 87, germany: 65, others: 234 },
+              ]}
+            >
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="time" tick={{ fill: 'white' }} />
+              <YAxis tick={{ fill: 'white' }} />
+              <ChartTooltip content={<ChartTooltipContent />} />
+              <ChartLegend content={<ChartLegendContent />} />
+              <Bar dataKey="usa" stackId="a" fill="var(--color-usa)" />
+              <Bar dataKey="china" stackId="a" fill="var(--color-china)" />
+              <Bar dataKey="russia" stackId="a" fill="var(--color-russia)" />
+              <Bar dataKey="germany" stackId="a" fill="var(--color-germany)" />
+              <Bar dataKey="others" stackId="a" fill="var(--color-others)" />
+            </BarChart>
+          </ChartContainer>
         </div>
       )
     }
